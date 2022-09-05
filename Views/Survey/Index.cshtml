@@ -1,0 +1,68 @@
+﻿@using ankiety.Models
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@model IEnumerable<SurveyModel>
+<div>
+    <h1>
+        Lista Ankiet
+    </h1>
+    @Html.ActionLink("Add", "Add", new {})
+    <table>
+        <thead>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateFrom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateTo)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+        </thead>
+        <tbodu>
+        @foreach (var survey in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelSurvey => survey.Id)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelSurvey => survey.Name)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelSurvey => survey.DateCreation)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelSurvey => survey.DateFrom)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelSurvey => survey.DateTo)
+                </th>
+                <th>
+                    @Html.ActionLink("Edit", "Edit", new { id = survey.Id})
+                    @Html.ActionLink("Delete", "Delete", new { id = survey.Id})
+                </th>
+            </tr>
+        }
+        </tbodu>
+        
+    </table>
+</div>

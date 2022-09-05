@@ -1,0 +1,68 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model SurveyModel
+@using (Html.BeginForm())
+{
+    @if (Model.Headers != null)
+    {
+        foreach (var heder in Model.Headers)
+        {
+            Html.Editor(heder.Description);
+        }
+    }
+    
+
+    @Html.AntiForgeryToken()    
+    <div class="form-horizontal">
+        <h4>Movie</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id)
+                @Html.ValidationMessageFor(model => model.Id)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateCreation, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateCreation)
+                @Html.ValidationMessageFor(model => model.DateCreation)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateFrom, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateFrom)
+                @Html.ValidationMessageFor(model => model.DateFrom)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateTo, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DateTo)
+                @Html.ValidationMessageFor(model => model.DateTo)
+            </div>
+        </div>
+        @*Genre and Price removed for brevity.*@        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a asp-controller="survey" asp-action="index" class="btn btn-primary">Cancel</a>
+            </div>
+        </div>
+    </div>
+}

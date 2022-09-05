@@ -1,0 +1,56 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model IEnumerable<SurveyModel>
+<div>
+    Lista Ankiet
+    
+    <table>
+        <tr>
+            <th>
+                @Html.DisplayName("Id")
+            </th>
+            <th>
+                @Html.DisplayName("Nazwa")
+            </th>
+            <th>
+                @Html.DisplayName("Data utworzenia")
+            </th>
+            <th>
+                @Html.DisplayName("Data od")
+            </th>
+            <th>
+                @Html.DisplayName("Data do")
+            </th>
+            <th>
+                @Html.DisplayName("")
+            </th>
+        </tr>
+       @* @foreach (SurveyModel survey in Model.surveys)
+        {
+            <tr>
+                <th>
+                    @survey.Id;
+                </th>
+                <th>
+                    @survey.Name;
+                </th>
+                <th>
+                    @survey.DateCreation;
+                </th>
+                <th>
+                    @survey.DateFrom;
+                </th>
+                <th>
+                    @survey.DateTo;
+                </th>
+                <th>
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.id})
+                </th>
+            </tr>
+        }*@
+        
+    </table>
+</div>
