@@ -1,0 +1,42 @@
+﻿@using ankiety.Models
+
+@model IEnumerable<HeaderModel>
+<div>
+    <div>
+        @foreach (var Header in Model)
+        {
+            @Html.DisplayFor(modelHeader => Header.Id)
+            <br>
+            @Html.DisplayFor(modelHeader => Header.Description)
+            <br>
+            @Html.DisplayFor(modelHeader => Header.Style)
+            <br>
+            @Html.DisplayFor(modelHeader => Header.SurveyId)
+            <br>
+            @Html.ActionLink("Edit", "Edit", new { id = Header.Id})
+            @Html.ActionLink("Delete", "Delete", new { id = Header.Id})
+            <br>
+            <br>
+        }
+    </div>
+    <div>
+        
+        @*@Html.ActionLink("Add", "Add", new {})
+        <div class="form-group">
+            @Html.LabelFor(model => model.Append, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id)
+                @Html.ValidationMessageFor(model => model.Id)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Id, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Id)
+                @Html.ValidationMessageFor(model => model.Id)
+            </div>
+        </div>*@
+
+    </div>
+</div>
+

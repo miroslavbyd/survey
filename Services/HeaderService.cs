@@ -98,7 +98,7 @@ namespace ankiety.Services
                 Description = s.Description,
                 Style = s.Style,
                 SurveyId = s.SurveyId
-            });
+            }).Where(s => s.SurveyId == id);
             var result = headersModel;
             return result;
         }

@@ -16,6 +16,12 @@ namespace ankiety.Controllers
             var data = _headerService.GetAll();
             return View(data);
         }
+        // GET: /Movies/GetAllId
+        public ActionResult GetAllId(int? id)
+        {
+            var data = _headerService.GetAllId(id);
+            return PartialView(data);
+        }
         // GET: /Movies/Edit/5
         public ActionResult Edit(int? id)
         {

@@ -12,8 +12,14 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<SurveyDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("surveyManagerDatabase")));
 builder.Services.AddTransient<ISurveyRepository, SurveyRepository>();
-builder.Services.AddTransient<ISurveyService, SurveyService>();
+builder.Services.AddTransient<IAnswerCompletedService, AnswerCompletedService>();
+builder.Services.AddTransient<IAnswerService, AnswerService>();
+builder.Services.AddTransient<IContainerService, ContainerService>();
 builder.Services.AddTransient<IHeaderService, HeaderService>();
+builder.Services.AddTransient<IQuestionService, QuestionService>();
+builder.Services.AddTransient<ISurveyCompletedService, SurveyCompletedService>();
+builder.Services.AddTransient<ISurveyService, SurveyService>();
+builder.Services.AddTransient<ITypeQuestionService, TypeQuestionService>();
 
 var app = builder.Build();
 

@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@using ankiety.Models
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+@model IEnumerable<HeaderModel>
+<div>
+    <h1>
+        Lista Ankiet
+    </h1>
+    @Html.ActionLink("Add", "Add", new {})
+    <table>
+        <thead>
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Style)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyId)
+            </th>
+            <th>
+
+            </th>
+        </tr>
+        </thead>
+        <tbodu>
+        @foreach (var Header in Model)
+        {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelHeader => Header.Id)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelHeader => Header.Description)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelHeader => Header.Style)
+                </th>
+                <th>
+                    @Html.DisplayFor(modelHeader => Header.SurveyId)
+                </th>
+                <th>
+                    @Html.ActionLink("Edit", "Edit", new { id = Header.Id})
+                    @Html.ActionLink("Delete", "Delete", new { id = Header.Id})
+                </th>
+            </tr>
+        }
+        </tbodu>
+        
+    </table>
+</div>
