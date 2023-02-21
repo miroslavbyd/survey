@@ -31,11 +31,38 @@ namespace ankiety.Services
             //var page = _surveyDbContext.containers.SingleOrDefault(x => x.Id == id);
             if (page != null)
             {
+                QuestionDelete(id);
                 _surveyDbContext.Remove(page);
                 _surveyDbContext.SaveChanges();
             }
         }
-
+        private void QuestionDelete(int? containerId)
+        {
+            var questions = _surveyDbContext
+                .questions.ToList();
+            var questionsListContainerId = questions.Where(s => s.ContainerId == containerId);
+            foreach (var question in questionsListContainerId)
+            {
+                if (question != null)
+                {
+                    AnswerDelete(question.Id);
+                    _surveyDbContext.Remove(question);
+                }
+            }
+        }
+        private void AnswerDelete(int? questionId)
+        {
+            var answers = _surveyDbContext
+                .answers.ToList();
+            var answersListQuestionId = answers.Where(s => s.QuestionId == questionId);
+            foreach (var answer in answersListQuestionId)
+            {
+                if (answer != null)
+                {
+                    _surveyDbContext.Remove(answer);
+                }
+            }
+        }
         public ContainerModel? Edit(int? id)
         {
             if (id == null)
@@ -59,7 +86,7 @@ namespace ankiety.Services
 
         public void Edit(ContainerModel containerModel)
         {
-            var page = _surveyDbContext.headers.Find(containerModel.Id);
+            var page = _surveyDbContext.containers.Find(containerModel.Id);
             if (page != null)
             {
                 //page.Id = containerModel.Id;
@@ -73,7 +100,7 @@ namespace ankiety.Services
         public IEnumerable<ContainerModel> GetAll()
         {
             var containers = _surveyDbContext
-                .containers;
+                .containers.ToList();
             IEnumerable<ContainerModel> containersModel = containers.Select(s => new ContainerModel()
             {
                 Id = s.Id,
@@ -87,7 +114,7 @@ namespace ankiety.Services
         public IEnumerable<ContainerModel>? GetAllId(int? id)
         {
             var containers = _surveyDbContext
-                .containers;
+                .containers.ToList();
             IEnumerable<ContainerModel> containersModel = containers.Select(s => new ContainerModel()
             {
                 Id = s.Id,
@@ -96,6 +123,36 @@ namespace ankiety.Services
             }).Where(s => s.SurveyId == id);
             var result = containersModel;
             return result;
+        }
+        public HeaderModel? GetId(int? headerId)
+        {
+            var headers = _surveyDbContext
+                .containers.ToList();
+            HeaderModel? headerModel = headers.Select(s => new HeaderModel()
+            {
+                Id = s.Id,
+                Description = s.Description,
+                SurveyId = s.SurveyId
+            }).Where(s => s.Id == headerId).FirstOrDefault();
+            var result = headerModel;
+            return result;
+        }
+        public int? ContainerIdToSurveyId(int? containerId)
+        {
+            int? surveyId = null;
+            var headers = _surveyDbContext
+                .containers.ToList();
+            ContainerModel? containerModel = headers.Select(s => new ContainerModel()
+            {
+                Id = s.Id,
+                Description = s.Description,
+                SurveyId = s.SurveyId
+            }).Where(s => s.Id == containerId).FirstOrDefault();
+            if(containerModel != null)
+            {
+                surveyId = containerModel.SurveyId;
+            }
+            return surveyId;
         }
     }
 }

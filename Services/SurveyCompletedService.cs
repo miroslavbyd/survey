@@ -17,7 +17,7 @@ namespace ankiety.Services
             if (page != null)
             {
                 //page.Id = surveyCompletedModel.Id;
-                page.DataAnswer = surveyCompletedModel.DataAnswer;
+                page.DateAnswer = surveyCompletedModel.DateAnswer;
                 page.Status = surveyCompletedModel.Status;
                 page.surveyId = surveyCompletedModel.surveyId;
                 page.UserId = surveyCompletedModel.UserId;
@@ -53,7 +53,7 @@ namespace ankiety.Services
             var surveyCompletedModel = new SurveyCompletedModel()
             {
                 Id = page.Id,
-                DataAnswer = page.DataAnswer,
+                DateAnswer = page.DateAnswer,
                 Status = page.Status,
                 surveyId = page.surveyId,
                 UserId = page.UserId,
@@ -67,7 +67,7 @@ namespace ankiety.Services
             if (page != null)
             {
                 //page.Id = surveyCompletedModel.Id;
-                page.DataAnswer = surveyCompletedModel.DataAnswer;
+                page.DateAnswer = surveyCompletedModel.DateAnswer;
                 page.Status = surveyCompletedModel.Status;
                 page.surveyId = surveyCompletedModel.surveyId;
                 page.UserId = surveyCompletedModel.UserId;
@@ -79,11 +79,11 @@ namespace ankiety.Services
         public IEnumerable<SurveyCompletedModel> GetAll()
         {
             var surveyCompleteds = _surveyDbContext
-                .surveyCompleteds;
+                .surveyCompleteds.ToList();
             IEnumerable<SurveyCompletedModel> surveyCompletedsModel = surveyCompleteds.Select(s => new SurveyCompletedModel()
             {
                 Id = s.Id,
-                DataAnswer = s.DataAnswer,
+                DateAnswer = s.DateAnswer,
                 Status = s.Status,
                 surveyId = s.surveyId,
                 UserId = s.UserId,
@@ -95,11 +95,11 @@ namespace ankiety.Services
         public IEnumerable<SurveyCompletedModel> GetAllId(int? id)
         {
             var surveyCompleteds = _surveyDbContext
-                .surveyCompleteds;
+                .surveyCompleteds.ToList();
             IEnumerable<SurveyCompletedModel> surveyCompletedsModel = surveyCompleteds.Select(s => new SurveyCompletedModel()
             {
                 Id = s.Id,
-                DataAnswer = s.DataAnswer,
+                DateAnswer = s.DateAnswer,
                 Status = s.Status,
                 surveyId = s.surveyId,
                 UserId = s.UserId,

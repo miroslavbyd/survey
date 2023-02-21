@@ -14,17 +14,13 @@
 
         public bool? ValueBIT;
 
-        public int? QuestionId;
-
-        public Task<SurveyModel>? surveyModel;
-
-        public Task<HeaderModel>? headerModel;
+        public int QuestionId;
 
         public AnswerModel()
         {
 
         }
-        public AnswerModel(int id, string? signature, int? valueINT, DateTime? valueDATETIME, string? valueTEXT, bool? valueBIT, int? questionId)
+        public AnswerModel(int id, string? signature, int? valueINT, DateTime? valueDATETIME, string? valueTEXT, bool? valueBIT, int questionId)
         {
             Id = id;
             Signature = signature;

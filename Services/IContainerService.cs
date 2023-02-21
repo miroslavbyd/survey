@@ -10,5 +10,6 @@ namespace ankiety.Services
         void Edit(ContainerModel containerModel);
         void Add(ContainerModel container);
         void Delete(int? id);
+        public int? ContainerIdToSurveyId(int? ContainerId);
     }
 }

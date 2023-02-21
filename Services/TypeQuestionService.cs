@@ -73,7 +73,7 @@ namespace ankiety.Services
         public IEnumerable<TypeQuestionModel> GetAll()
         {
             var typeQuestions = _surveyDbContext
-                .typeQuestions;
+                .typeQuestions.ToList();
             IEnumerable<TypeQuestionModel> typeQuestionsModel = typeQuestions.Select(s => new TypeQuestionModel()
             {
                 Id = s.Id,

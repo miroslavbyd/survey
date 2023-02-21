@@ -1,0 +1,62 @@
+﻿@using ankiety.Models
+
+@model IEnumerable<AnswerModel>
+<div  style="border: 5px  solid gray; padding:2px; margin:2px">
+    <div>
+        <h4>Answers</h4>
+        @foreach (var Answer in Model)
+        {
+            <div class="form-horizontal" style="border: 2px  solid gray; padding:2px; margin:2px">
+                @using (Html.BeginForm(null, "Answer", new { questionId = Answer.Id }, FormMethod.Post))
+                {
+                    <div>
+                        @Html.HiddenFor(modelAnswer => Answer.Id)
+                        <div class="form-group">
+                            @Html.LabelFor(modelAnswer => Answer.Signature, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelAnswer => Answer.Signature)
+                                @Html.ValidationMessageFor(modelAnswer => Answer.Signature)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(modelAnswer => Answer.ValueINT, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelAnswer => Answer.ValueINT)
+                                @Html.ValidationMessageFor(modelAnswer => Answer.ValueINT)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(modelAnswer => Answer.ValueDATETIME, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelAnswer => Answer.ValueDATETIME)
+                                @Html.ValidationMessageFor(modelAnswer => Answer.ValueDATETIME)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(modelAnswer => Answer.ValueTEXT, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelAnswer => Answer.ValueTEXT)
+                                @Html.ValidationMessageFor(modelAnswer => Answer.ValueTEXT)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(modelAnswer => Answer.ValueBIT, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelAnswer => Answer.ValueBIT)
+                                @Html.ValidationMessageFor(modelAnswer => Answer.ValueBIT)
+                            </div>
+                        </div>
+                        @Html.HiddenFor(modelContainer => Answer.QuestionId)
+                        @*Batton*@        
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <button type="submit" class="btn btn-primary" formaction="@Url.Action("Delete", "Answer")">Delete Answer</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

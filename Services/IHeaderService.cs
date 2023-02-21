@@ -10,5 +10,6 @@ namespace ankiety.Services
         void Edit(HeaderModel headerModel);
         void Add(HeaderModel header);
         void Delete(int? id);
+        public int? HeaderIdToSurveyId(int? HeaderId);
     }
 }

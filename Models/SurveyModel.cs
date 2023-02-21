@@ -19,7 +19,7 @@ namespace ankiety.Models
         //public Task<ContainerModel>? containerModel { get; set; }
         //public Task<HeaderModel>? HeadersModel { get; set; }
         
-        public virtual ICollection<Header>? Headers { get; set; }
+        //public virtual ICollection<Header>? Headers { get; set; }
         public SurveyModel()
         {
 

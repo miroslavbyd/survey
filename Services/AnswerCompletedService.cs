@@ -83,7 +83,7 @@ namespace ankiety.Services
         public IEnumerable<AnswerCompletedModel> GetAll()
         {
             var answerCompleteds = _surveyDbContext
-                .answerCompleteds;
+                .answerCompleteds.ToList();
             IEnumerable<AnswerCompletedModel> answerCompletedsModel = answerCompleteds.Select(s => new AnswerCompletedModel()
             {
                 Id = s.Id,
@@ -100,7 +100,7 @@ namespace ankiety.Services
         public IEnumerable<AnswerCompletedModel> GetAllId(int? id)
         {
             var answerCompleteds = _surveyDbContext
-                .answerCompleteds;
+                .answerCompleteds.ToList();
             IEnumerable<AnswerCompletedModel> answerCompletedsModel = answerCompleteds.Select(s => new AnswerCompletedModel()
             {
                 Id = s.Id,

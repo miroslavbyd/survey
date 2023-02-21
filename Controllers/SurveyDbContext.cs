@@ -17,7 +17,7 @@ namespace ankiety.Controllers
 
         public DbSet<Survey> surveys { get; set; }
 
-        public DbSet<ankiety.Models.SurveyModel>? SurveyModel { get; set; }
+        //public DbSet<ankiety.Models.SurveyModel>? SurveyModel { get; set; }
         public DbSet<Header> headers { get; set; }
         public DbSet<Container> containers { get; set; }
         public DbSet<Question> questions { get; set; }

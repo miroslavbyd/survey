@@ -8,7 +8,7 @@
 
         public int SurveyId;
 
-        public Task<QuestionModel>? questionModel;
+        //public Task<QuestionModel>? questionModel;
 
         public ContainerModel()
         {

@@ -22,12 +22,12 @@
 
         public bool? ValueBIT { get; set; }
 
-        public int? QuestionId { get; set; }
+        public int QuestionId { get; set; }
         public Answer()
         {
 
         }
-        public Answer(int id, string? signature, int? valueINT, DateTime? valueDATETIME, string? valueTEXT, bool? valueBIT, int? questionId)
+        public Answer(int id, string? signature, int? valueINT, DateTime? valueDATETIME, string? valueTEXT, bool? valueBIT, int questionId)
         {
             Id = id;
             Signature = signature;

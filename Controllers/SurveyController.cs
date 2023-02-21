@@ -14,7 +14,6 @@ namespace ankiety.Controllers
         }
         public ActionResult Index()
         {
-            //return View(_surveyRepository.GetAll());
             var data = _surveyService.GetAll();
             return View(data);
         }

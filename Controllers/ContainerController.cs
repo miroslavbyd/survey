@@ -4,43 +4,42 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ankiety.Controllers
 {
-    public class HeaderController : Controller
+    public class ContainerController : Controller
     {
-        private readonly IHeaderService _headerService;
-        public HeaderController(IHeaderService headerService)
+        private readonly IContainerService _containerService;
+        public ContainerController(IContainerService containerService)
         {
-            _headerService = headerService;
+            _containerService = containerService;
         }
         public ActionResult Index()
         {
-            var data = _headerService.GetAll();
+            var data = _containerService.GetAll();
             return View(data);
         }
         // GET: /Movies/GetAllId
         public ActionResult GetAllId(int? id)
         {
-            var data = _headerService.GetAllId(id);
+            var data = _containerService.GetAllId(id);
             return PartialView(data);
         }
         // GET: /Movies/Edit/5
         public ActionResult Edit(int? id)
         {
-            var data = _headerService.Edit(id);
+            var data = _containerService.Edit(id);
             return View(data);
         }
         [HttpPost]
-        public ActionResult Edit(HeaderModel headerModel)
+        public ActionResult Edit(ContainerModel containerModel)
         {
-            var rezult = new HeaderModel()
+            var rezult = new ContainerModel()
             {
-                Id = int.Parse(Request.Form["Header.Id"]),
-                Description = Request.Form["Header.Description"],
-                Style = int.Parse(Request.Form["Header.Style"]),
-                SurveyId = int.Parse(Request.Form["Header.SurveyId"])
+                Id = int.Parse(Request.Form["Container.Id"]),
+                Description = Request.Form["Container.Description"],
+                SurveyId = int.Parse(Request.Form["Container.SurveyId"])
             };
-            _headerService.Edit(rezult);
-            int? Id = _headerService.HeaderIdToSurveyId(rezult.Id);
-            if(Id!=null)
+            _containerService.Edit(rezult);
+            int? Id = _containerService.ContainerIdToSurveyId(rezult.Id);
+            if (Id != null)
             {
                 return RedirectToAction("Edit", "Survey", new { Id });
             }
@@ -52,18 +51,17 @@ namespace ankiety.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
-        public ActionResult Add(HeaderModel headerModel)
+        public ActionResult Add(ContainerModel containerModel)
         {
-            var rezult = new HeaderModel();
+            var rezult = new ContainerModel();
             if (rezult != null)
             {
                 //rezult.Id = int.Parse(Request.Form["Id"]);
                 rezult.Description = Request.Form["Description"];
-                rezult.Style = int.Parse(Request.Form["Style"]);
                 rezult.SurveyId = int.Parse(Request.Form["SurveyId"]);
             };
             int? Id = rezult.SurveyId;
-            _headerService.Add(rezult);
+            _containerService.Add(rezult);
             if (Id != null)
             {
                 return RedirectToAction("Edit", "Survey", new { Id });
@@ -74,22 +72,21 @@ namespace ankiety.Controllers
         // GET: /Movies/Delete/5
         public ActionResult Delete(int? id)
         {
-            var data = _headerService.Edit(id);
+            var data = _containerService.Edit(id);
             return View(data);
         }
         [HttpPost]
-        public ActionResult Delete(HeaderModel headerModel)
+        public ActionResult Delete(ContainerModel containerModel)
         {
-            var rezult = new HeaderModel();
+            var rezult = new ContainerModel();
             if (rezult != null)
             {
-                rezult.Id = int.Parse(Request.Form["Header.Id"]);
-                rezult.Description = Request.Form["Header.Description"];
-                rezult.Style = int.Parse(Request.Form["Header.Style"]);
-                rezult.SurveyId = int.Parse(Request.Form["Header.SurveyId"]);
+                rezult.Id = int.Parse(Request.Form["Container.Id"]);
+                rezult.Description = Request.Form["Container.Description"];
+                rezult.SurveyId = int.Parse(Request.Form["Container.SurveyId"]);
             };
-            int? Id = _headerService.HeaderIdToSurveyId(rezult.Id);
-            _headerService.Delete(rezult.Id);
+            int? Id = _containerService.ContainerIdToSurveyId(rezult.Id);
+            _containerService.Delete(rezult.Id);
             if (Id != null)
             {
                 return RedirectToAction("Edit", "Survey", new { Id });

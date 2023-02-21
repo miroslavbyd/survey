@@ -76,7 +76,7 @@ namespace ankiety.Services
         public IEnumerable<HeaderModel> GetAll()
         {
             var headers = _surveyDbContext
-                .headers;
+                .headers.ToList();
             IEnumerable<HeaderModel> headersModel = headers.Select(s => new HeaderModel()
             {
                 Id = s.Id,
@@ -91,7 +91,7 @@ namespace ankiety.Services
         public IEnumerable<HeaderModel>? GetAllId(int? id)
         {
             var headers = _surveyDbContext
-                .headers;
+                .headers.ToList();
             IEnumerable<HeaderModel> headersModel = headers.Select(s => new HeaderModel()
             {
                 Id = s.Id,
@@ -101,6 +101,39 @@ namespace ankiety.Services
             }).Where(s => s.SurveyId == id);
             var result = headersModel;
             return result;
+        }
+        public HeaderModel? GetId(int? headerId)
+        {
+            var headers = _surveyDbContext
+                .headers.ToList();
+            HeaderModel? headerModel = headers.Select(s => new HeaderModel()
+            {
+                Id = s.Id,
+                Description = s.Description,
+                Style = s.Style,
+                SurveyId = s.SurveyId
+            }).Where(s => s.Id == headerId).FirstOrDefault();
+            var result = headerModel;
+            return result;
+        }
+
+        public int? HeaderIdToSurveyId(int? headerId)
+        {
+            int? surveyId = null;
+            var headers = _surveyDbContext
+                .headers.ToList();
+            HeaderModel? headerModel = headers.Select(s => new HeaderModel()
+            {
+                Id = s.Id,
+                Description = s.Description,
+                Style = s.Style,
+                SurveyId = s.SurveyId
+            }).Where(s => s.Id == headerId).FirstOrDefault();
+            if(headerModel != null)
+            {
+                surveyId = headerModel.SurveyId;
+            }
+            return surveyId;
         }
     }
 }

@@ -1,0 +1,51 @@
+﻿@using ankiety.Models
+@model AnswerModel
+@using (Html.BeginForm("Add", "Answer", FormMethod.Post))
+{
+    <div class="form-horizontal" style="border: 2px  solid gray; padding:2px; margin:2px">
+        <h4>Add Answer</h4>
+        @Html.HiddenFor(model => model.Id)
+        <div class="form-group">
+            @Html.LabelFor(model => model.Signature, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Signature)
+                @Html.ValidationMessageFor(model => model.Signature)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ValueINT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ValueINT)
+                @Html.ValidationMessageFor(model => model.ValueINT)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ValueDATETIME, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ValueDATETIME)
+                @Html.ValidationMessageFor(model => model.ValueDATETIME)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ValueTEXT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ValueTEXT)
+                @Html.ValidationMessageFor(model => model.ValueTEXT)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ValueBIT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ValueBIT)
+                @Html.ValidationMessageFor(model => model.ValueBIT)
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.QuestionId)
+        @*Batton*@       
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Add Answer</button>
+            </div>
+        </div>
+    </div>
+}

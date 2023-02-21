@@ -4,22 +4,22 @@ using ankiety.Models;
 
 namespace ankiety.Services
 {
-    public class QuestionService :IQuestionService
+    public class QuestionService : IQuestionService
     {
         private readonly SurveyDbContext _surveyDbContext;
         public QuestionService(SurveyDbContext surveyDbContext)
         {
             _surveyDbContext = surveyDbContext;
         }
-        public void Add(QuestionModel headerModel)
+        public void Add(QuestionModel questionModel)
         {
             Question page = new Question();
             if (page != null)
             {
-                //page.Id = headerModel.Id;
-                page.Description = headerModel.Description;
-                page.CointainerId = headerModel.CointainerId;
-                page.TypeQuestionId = headerModel.TypeQuestionId;
+                //page.Id = questionModel.Id;
+                page.Description = questionModel.Description;
+                page.ContainerId = questionModel.ContainerId;
+                page.TypeQuestionId = questionModel.TypeQuestionId;
 
             }
             _surveyDbContext.Add(page);
@@ -32,11 +32,24 @@ namespace ankiety.Services
             //var page = _surveyDbContext.questions.SingleOrDefault(x => x.Id == id);
             if (page != null)
             {
+                AnswerDelete(id);
                 _surveyDbContext.Remove(page);
                 _surveyDbContext.SaveChanges();
             }
         }
-
+        private void AnswerDelete(int? questionId)
+        {
+            var answers = _surveyDbContext
+                .answers.ToList();
+            var answersListQuestionId = answers.Where(s => s.QuestionId == questionId);
+            foreach(var answer in answersListQuestionId)
+            {
+                if (answer != null)
+                {
+                    _surveyDbContext.Remove(answer);
+                }
+            }
+        }
         public QuestionModel? Edit(int? id)
         {
             if (id == null)
@@ -53,7 +66,7 @@ namespace ankiety.Services
             {
                 Id = page.Id,
                 Description = page.Description,
-                CointainerId = page.CointainerId,
+                ContainerId = page.ContainerId,
                 TypeQuestionId = page.TypeQuestionId
             };
             return questionModel;
@@ -66,7 +79,7 @@ namespace ankiety.Services
             {
                 //page.Id = questionModel.Id;
                 page.Description = questionModel.Description;
-                page.CointainerId = questionModel.CointainerId;
+                page.ContainerId = questionModel.ContainerId;
                 page.TypeQuestionId = questionModel.TypeQuestionId;
 
             }
@@ -76,12 +89,12 @@ namespace ankiety.Services
         public IEnumerable<QuestionModel> GetAll()
         {
             var questions = _surveyDbContext
-                .questions;
+                .questions.ToList();
             IEnumerable<QuestionModel> questionsModel = questions.Select(s => new QuestionModel()
             {
                 Id = s.Id,
                 Description = s.Description,
-                CointainerId = s.CointainerId,
+                ContainerId = s.ContainerId,
                 TypeQuestionId = s.TypeQuestionId
             });
             var result = questionsModel;
@@ -91,16 +104,65 @@ namespace ankiety.Services
         public IEnumerable<QuestionModel>? GetAllId(int? id)
         {
             var questions = _surveyDbContext
-                .questions;
+                .questions.ToList();
             IEnumerable<QuestionModel> questionsModel = questions.Select(s => new QuestionModel()
             {
                 Id = s.Id,
                 Description = s.Description,
-                CointainerId = s.CointainerId,
+                ContainerId = s.ContainerId,
                 TypeQuestionId = s.TypeQuestionId
-            }).Where(s => s.CointainerId == id);
+            }).Where(s => s.ContainerId == id);
             var result = questionsModel;
             return result;
+        }
+        public QuestionModel? GetId(int? questionId)
+        {
+            var questions = _surveyDbContext
+                .questions.ToList();
+            QuestionModel? questionModel = questions.Select(s => new QuestionModel()
+            {
+                Id = s.Id,
+                Description = s.Description,
+                ContainerId = s.ContainerId,
+                TypeQuestionId = s.TypeQuestionId
+            }).Where(s => s.Id == questionId).FirstOrDefault();
+            var result = questionModel;
+            return result;
+        }
+        public int? QuestionIdToContainerId(int? questionId)
+        {
+            int? containerId = null;
+            var questions = _surveyDbContext
+                .questions.ToList();
+            QuestionModel? questionModel = questions.Select(s => new QuestionModel()
+            {
+                Id = s.Id,
+                Description = s.Description,
+                ContainerId = s.ContainerId,
+                TypeQuestionId = s.TypeQuestionId
+            }).Where(s => s.Id == questionId).FirstOrDefault();
+            if (questionModel != null)
+            {
+                containerId = questionModel.ContainerId;
+            }
+            return containerId;
+        }
+        public int? ContainerIdToSurveyId(int? containerId)
+        {
+            int? surveyId = null;
+            var containers = _surveyDbContext
+                .containers.ToList();
+            ContainerModel? containerModel = containers.Select(s => new ContainerModel()
+            {
+                Id = s.Id,
+                Description = s.Description,
+                SurveyId = s.SurveyId
+            }).Where(s => s.Id == containerId).FirstOrDefault();
+            if (containerModel != null)
+            {
+                surveyId = containerModel.SurveyId;
+            }
+            return surveyId;
         }
     }
 }

@@ -1,45 +1,40 @@
 ﻿@using ankiety.Models
 
 @model IEnumerable<ContainerModel>
-<div>
+<div  style="border: 5px  solid red; padding:2px; margin:2px">
     <div>
+        <h4>Containers</h4>
         @foreach (var Container in Model)
         {
-            @Html.DisplayFor(modelContainer => Container.Id)
-            <br>
-            @Html.DisplayFor(modelContainer => Container.Description)
-            <br>
-            @Html.DisplayFor(modelContainer => Container.questionModel)
-            <br>
-            @Html.DisplayFor(modelContainer => Container.SurveyId)
-            <br>
-            @Html.ActionLink("Edit", "Edit", new { id = Container.Id})
-            @Html.ActionLink("Delete", "Delete", new { id = Container.Id})
-            <br>
-            <br>
-            <div>
-                @*@await Component.InvokeAsync("Questions",Container.Id);*@
+            <div class="form-horizontal" style="border: 2px  solid red; padding:2px; margin:2px">
+                @using (Html.BeginForm(null, "Container", new { containerId = Container.Id }, FormMethod.Post))
+                {
+                    <div>
+                        @Html.HiddenFor(modelContainer => Container.Id)
+                        <div class="form-group">
+                            @Html.LabelFor(modelContainer => Container.Description, new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(modelContainer => Container.Description)
+                                @Html.ValidationMessageFor(modelContainer => Container.Description)
+                            </div>
+                        </div>
+                        @Html.HiddenFor(modelContainer => Container.SurveyId)
+                        @*Batton*@       
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <button type="submit" class="btn btn-primary">Edit</button>
+                                <button type="submit" class="btn btn-primary" formaction="@Url.Action("Delete", "Container")">Delete Container</button>
+                            </div>
+                        </div>
+                    </div>
+                }
+                @await Component.InvokeAsync("Questions",new { 
+                         ContainerId =  Container.Id,
+                         Function = "GetAllId"  })
+                @await Component.InvokeAsync("Questions",new { 
+                         ContainerId =  Container.Id,
+                         Function = "Add"  })
             </div>
         }
     </div>
-    <div>
-        
-        @*@Html.ActionLink("Add", "Add", new {})
-        <div class="form-group">
-            @Html.LabelFor(model => model.Append, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Id)
-                @Html.ValidationMessageFor(model => model.Id)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Id, new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Id)
-                @Html.ValidationMessageFor(model => model.Id)
-            </div>
-        </div>*@
-
-    </div>
-    
 </div>

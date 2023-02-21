@@ -10,19 +10,18 @@
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public DateTime? DataAnswer { get; set; }
+        public DateTime? DateAnswer { get; set; }
         public int? Status { get; set; }
         public int surveyId { get; set; }
         public int? UserId { get; set; }
-        public int surveyCompletedId { get; set; }
         public SurveyCompleted()
         {
 
         }
-        public SurveyCompleted(int id, DateTime? dataAnswer, int? status, int surveyId, int? userId)
+        public SurveyCompleted(int id, DateTime? dateAnswer, int? status, int surveyId, int? userId)
         {
             Id = id;
-            DataAnswer = dataAnswer;
+            DateAnswer = dateAnswer;
             Status = status;
             this.surveyId = surveyId;
             UserId = userId;

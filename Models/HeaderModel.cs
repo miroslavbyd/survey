@@ -13,7 +13,6 @@ namespace ankiety.Models
         public int? Style;
 
         public int SurveyId;
-
         public HeaderModel()
         {
 

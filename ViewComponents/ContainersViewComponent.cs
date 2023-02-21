@@ -1,4 +1,5 @@
-﻿using ankiety.Services;
+﻿using ankiety.Models;
+using ankiety.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ankiety.ViewComponents
@@ -10,10 +11,24 @@ namespace ankiety.ViewComponents
         {
             _containerService = containerService;
         }
-        public IViewComponentResult Invoke(int Id)
+        public IViewComponentResult Invoke(int SurveyId, string Function)
         {
-            var rezult = _containerService.GetAllId(Id);
-            return View(rezult);
+            string MyView = "Default";
+
+            if (Function == "GetAllId")
+            {
+                var rezult = _containerService.GetAllId(SurveyId);
+                var model = rezult;
+                return View(MyView, model);
+            }
+            if (Function == "Add")
+            {
+                ContainerModel containerModel = new ContainerModel();
+                containerModel.SurveyId = SurveyId;
+                var model = containerModel;
+                return View("AddContainer", model);
+            }
+            return View(null);
         }
     }
 }

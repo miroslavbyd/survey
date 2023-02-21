@@ -42,19 +42,19 @@
         {
             <tr>
                 <th>
-                    @Html.DisplayFor(modelSurvey => survey.Id)
+                    @Html.EditorFor(modelSurvey => survey.Id)
                 </th>
                 <th>
-                    @Html.DisplayFor(modelSurvey => survey.Name)
+                    @Html.EditorFor(modelSurvey => survey.Name)
                 </th>
                 <th>
-                    @Html.DisplayFor(modelSurvey => survey.DateCreation)
+                    @Html.EditorFor(modelSurvey => survey.DateCreation)
                 </th>
                 <th>
-                    @Html.DisplayFor(modelSurvey => survey.DateFrom)
+                    @Html.EditorFor(modelSurvey => survey.DateFrom)
                 </th>
                 <th>
-                    @Html.DisplayFor(modelSurvey => survey.DateTo)
+                    @Html.EditorFor(modelSurvey => survey.DateTo)
                 </th>
                 <th>
                     @Html.ActionLink("Edit", "Edit", new { id = survey.Id})

@@ -6,7 +6,7 @@
 
         public string? Description;
 
-        public int CointainerId;
+        public int ContainerId;
 
         public int TypeQuestionId;
 
@@ -14,11 +14,11 @@
         {
 
         }
-        public QuestionModel(int id, string description, int cointainerId, int typeQuestionId)
+        public QuestionModel(int id, string description, int containerId, int typeQuestionId)
         {
             Id = id;
             Description = description;
-            CointainerId = cointainerId;
+            ContainerId = containerId;
             TypeQuestionId = typeQuestionId;
         }
     }

@@ -85,7 +85,7 @@ namespace ankiety.Services
         public IEnumerable<AnswerModel> GetAll()
         {
             var answers = _surveyDbContext
-                .answers;
+                .answers.ToList();
             IEnumerable<AnswerModel> answersModel = answers.Select(s => new AnswerModel()
             {
                 Id = s.Id,
@@ -100,10 +100,10 @@ namespace ankiety.Services
             return result;
         }
 
-        public IEnumerable<AnswerModel> GetAllId(int id)
+        public IEnumerable<AnswerModel> GetAllId(int? id)
         {
             var answers = _surveyDbContext
-                .answers;
+                .answers.ToList();
             IEnumerable<AnswerModel> answersModel = answers.Select(s => new AnswerModel()
             {
                 Id = s.Id,
@@ -116,6 +116,62 @@ namespace ankiety.Services
             }).Where(s => s.QuestionId == id);
             var result = answersModel;
             return result;
+        }
+        public int? AnswerIdToQuestionId(int? answerId)
+        {
+            int? questionId = null;
+            var answers = _surveyDbContext
+                .answers.ToList();
+            AnswerModel? answerModel = answers.Select(s => new AnswerModel()
+            {
+                Id = s.Id,
+                Signature = s.Signature,
+                ValueINT = s.ValueINT,
+                ValueDATETIME = s.ValueDATETIME,
+                ValueTEXT = s.ValueTEXT,
+                ValueBIT = s.ValueBIT,
+                QuestionId = s.QuestionId
+            }).Where(s => s.Id == answerId).FirstOrDefault();
+            if (answerModel != null)
+            {
+                questionId = answerModel.QuestionId;
+            }
+            return questionId;
+        }
+        public int? QuestionIdToContainerId(int? questionId)
+        {
+            int? containerId = null;
+            var questions = _surveyDbContext
+                .questions.ToList();
+            QuestionModel? questionModel = questions.Select(s => new QuestionModel()
+            {
+                Id = s.Id,
+                Description = s.Description,
+                ContainerId = s.ContainerId,
+                TypeQuestionId = s.TypeQuestionId
+            }).Where(s => s.Id == questionId).FirstOrDefault();
+            if (questionModel != null)
+            {
+                containerId = questionModel.ContainerId;
+            }
+            return containerId;
+        }
+        public int? ContainerIdToSurveyId(int? containerId)
+        {
+            int? surveyId = null;
+            var containers = _surveyDbContext
+                .containers.ToList();
+            ContainerModel? containerModel = containers.Select(s => new ContainerModel()
+            {
+                Id = s.Id,
+                Description = s.Description,
+                SurveyId = s.SurveyId
+            }).Where(s => s.Id == containerId).FirstOrDefault();
+            if (containerModel != null)
+            {
+                surveyId = containerModel.SurveyId;
+            }
+            return surveyId;
         }
     }
 }

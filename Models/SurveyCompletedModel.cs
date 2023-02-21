@@ -4,7 +4,7 @@
     {
         public int Id;
 
-        public DateTime? DataAnswer;
+        public DateTime? DateAnswer;
 
         public int? Status;
 
@@ -12,18 +12,16 @@
 
         public int? UserId;
 
-        public int surveyCompletedId;
-
         public Task<AnswerCompletedModel>? answerCompletedModel;
 
         public SurveyCompletedModel()
         {
 
         }
-        public SurveyCompletedModel(int id, DateTime? dataAnswer, int? status, int surveyId, int? userId)
+        public SurveyCompletedModel(int id, DateTime? dateAnswer, int? status, int surveyId, int? userId)
         {
             Id = id;
-            DataAnswer = dataAnswer;
+            DateAnswer = dateAnswer;
             Status = status;
             this.surveyId = surveyId;
             UserId = userId;

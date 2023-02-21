@@ -16,7 +16,7 @@ namespace ankiety.Services
         public IEnumerable<SurveyModel> GetAll()
         {
             var surveys = _surveyDbContext
-                .surveys;
+                .surveys.ToList();
             IEnumerable<SurveyModel> surveysModel = surveys.Select(s => new SurveyModel()
             {
                 Id = s.Id,
@@ -84,10 +84,65 @@ namespace ankiety.Services
             //var page = _surveyDbContext.surveys.SingleOrDefault(x => x.Id == id);
             if (page != null)
             {
+                HeaderDelete(id);
+                ContainerDelete(id);
                 _surveyDbContext.Remove(page);
                 _surveyDbContext.SaveChanges();
             }
         }
-
+        private void HeaderDelete(int? surveyId)
+        {
+            var headers = _surveyDbContext
+                .headers.ToList();
+            var a = headers.Where(s => s.SurveyId == surveyId);
+            foreach (var header in a)
+            {
+                if (header != null)
+                {
+                    _surveyDbContext.Remove(header);
+                }
+            }
+        }
+        private void ContainerDelete(int? surveyId)
+        {
+            var containers = _surveyDbContext
+                .containers.ToList();
+            var containersListSurveyId = containers.Where(s => s.SurveyId == surveyId);
+            foreach (var container in containersListSurveyId)
+            {
+                if (container != null)
+                {
+                    QuestionDelete(container.Id);
+                    _surveyDbContext.Remove(container);
+                }
+            }
+        }
+        private void QuestionDelete(int? containerId)
+        {
+            var questions = _surveyDbContext
+                .questions.ToList();
+            var questionsListContainerId = questions.Where(s => s.ContainerId == containerId);
+            foreach (var question in questionsListContainerId)
+            {
+                if (question != null)
+                {
+                    AnswerDelete(question.Id);
+                    _surveyDbContext.Remove(question);
+                }
+            }
+        }
+        private void AnswerDelete(int? questionId)
+        {
+            var answers = _surveyDbContext
+                .answers.ToList();
+            var answersListQuestionId = answers.Where(s => s.QuestionId == questionId);
+            foreach (var answer in answersListQuestionId)
+            {
+                if (answer != null)
+                {
+                    _surveyDbContext.Remove(answer);
+                }
+            }
+        }
     }
 }

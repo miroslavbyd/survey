@@ -4,35 +4,18 @@
 @{
 }
 @model SurveyModel
-@using (Html.BeginForm())
+@{var a = Model;}
+    @await Component.InvokeAsync("Headers",new { 
+                         SurveyId =  Model.Id,
+                         Function = "GetAllId"  })
+    @await Component.InvokeAsync("Headers",new { 
+                         SurveyId =  Model.Id,
+                         Function = "Add"  })
+@using (Html.BeginForm("Edit", "Survey", FormMethod.Post))
 {
-    @*@if (Model.Headers != null)
-    {
-        foreach (var heder in Model.Headers)
-        {
-            Html.Editor(heder.Description);
-        }
-    }*@
-    @*@Html.Partial("~/Views/Header/_GetAllId.cshtml",Model.Id)*@
-    //@Url.Action()
-    @await Component.InvokeAsync("Headers",Model.Id)
-    <div class="page">
-    <div id="foo-view" data-url="@Url.Action(action: "GetAllId", controller: "Header")"></div>
-    </div>
-
-    <script>
-        $(document).ready(function () {
-            (function () {
-                var url = $("#foo-view").data("url");
-                $("#foo-view").load(url);
-            })();
-        });
-    </script>
-
     @Html.AntiForgeryToken()    
     <div class="form-horizontal">
-        <h4>Movie</h4>
-        <hr />
+        <h4>Survey</h4>
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Id)
 
@@ -71,14 +54,21 @@
                 @Html.ValidationMessageFor(model => model.DateTo)
             </div>
         </div>
-        @await Component.InvokeAsync("Containers",Model.Id)
+        
        
         @*Genre and Price removed for brevity.*@        
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <button type="submit" class="btn btn-primary">Update</button>
+                <button type="submit" class="btn btn-primary">Edit</button>
                 <a asp-controller="survey" asp-action="index" class="btn btn-primary">Cancel</a>
             </div>
         </div>
     </div>
 }
+    @*@await Component.InvokeAsync("Containers",Model.Id)*@
+    @await Component.InvokeAsync("Containers",new { 
+                         SurveyId =  Model.Id,
+                         Function = "GetAllId"  })
+    @await Component.InvokeAsync("Containers",new { 
+                         SurveyId =  Model.Id,
+                         Function = "Add"  })
