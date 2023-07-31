@@ -3,10 +3,10 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+@*<div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+</div>*@
 @model IEnumerable<SurveyModel>
 <div>
     <h1>
@@ -42,23 +42,24 @@
         {
             <tr>
                 <th>
-                    @Html.EditorFor(modelSurvey => survey.Id)
+                    @Html.DisplayFor(modelSurvey => survey.Id)
                 </th>
                 <th>
-                    @Html.EditorFor(modelSurvey => survey.Name)
+                    @Html.DisplayFor(modelSurvey => survey.Name)
                 </th>
                 <th>
-                    @Html.EditorFor(modelSurvey => survey.DateCreation)
+                    @Html.DisplayFor(modelSurvey => survey.DateCreation)
                 </th>
                 <th>
-                    @Html.EditorFor(modelSurvey => survey.DateFrom)
+                    @Html.DisplayFor(modelSurvey => survey.DateFrom)
                 </th>
                 <th>
-                    @Html.EditorFor(modelSurvey => survey.DateTo)
+                    @Html.DisplayFor(modelSurvey => survey.DateTo)
                 </th>
                 <th>
                     @Html.ActionLink("Edit", "Edit", new { id = survey.Id})
                     @Html.ActionLink("Delete", "Delete", new { id = survey.Id})
+                    @Html.ActionLink("Presentation", "Presentation", new { id = survey.Id})
                 </th>
             </tr>
         }

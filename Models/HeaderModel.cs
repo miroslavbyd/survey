@@ -17,7 +17,7 @@ namespace ankiety.Models
         {
 
         }
-        public HeaderModel(int id, string description, int style, int surveyId)
+        public HeaderModel(int id, string? description, int? style, int surveyId)
         {
             Id = id;
             Description = description;

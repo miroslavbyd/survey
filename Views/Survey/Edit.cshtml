@@ -8,6 +8,9 @@
     @await Component.InvokeAsync("Headers",new { 
                          SurveyId =  Model.Id,
                          Function = "GetAllId"  })
+    @*@await Component.InvokeAsync("Headers",new { 
+                         SurveyId =  Model.Id,
+                         Function = ""  })*@
     @await Component.InvokeAsync("Headers",new { 
                          SurveyId =  Model.Id,
                          Function = "Add"  })
@@ -67,6 +70,7 @@
 }
     @*@await Component.InvokeAsync("Containers",Model.Id)*@
     @await Component.InvokeAsync("Containers",new { 
+                         HeaderId = 0,
                          SurveyId =  Model.Id,
                          Function = "GetAllId"  })
     @await Component.InvokeAsync("Containers",new { 

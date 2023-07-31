@@ -1,0 +1,34 @@
+﻿@model SurveyModel
+@{var a = Model;}
+    @await Component.InvokeAsync("Headers",new { 
+                         SurveyId =  Model.Id,
+                         Function = "Presentation"  })
+@using (Html.BeginForm("Edit", "Survey", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Name)
+
+            </div>
+        </div>
+        @Html.HiddenFor(model => model.DateCreation)
+        @Html.HiddenFor(model => model.DateFrom)
+        @Html.HiddenFor(model => model.DateTo)
+       
+        @*Genre and Price removed for brevity.*@        
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a asp-controller="survey" asp-action="index" class="btn btn-primary">Cancel</a>
+            </div>
+        </div>
+    </div>
+}
+    @await Component.InvokeAsync("Containers",new { 
+                         HeaderId = 0,
+                         SurveyId =  Model.Id,
+                         Function = "Presentation"  })

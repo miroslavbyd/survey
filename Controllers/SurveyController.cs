@@ -17,6 +17,12 @@ namespace ankiety.Controllers
             var data = _surveyService.GetAll();
             return View(data);
         }
+        // GET: /Movies/Presentation/5
+        public ActionResult Presentation(int? id)
+        {
+            var data = _surveyService.Edit(id);
+            return View(data);
+        }
         // GET: /Movies/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -26,6 +32,7 @@ namespace ankiety.Controllers
         [HttpPost]
         public ActionResult Edit(SurveyModel surveyModel)
         {
+            var a = Request.Form["Id"];
             _surveyService.Edit(surveyModel);
             return RedirectToAction("Index");
         }

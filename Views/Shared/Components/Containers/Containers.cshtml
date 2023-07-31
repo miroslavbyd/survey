@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ContainerModel>
+<div  style="border: 5px  solid red; padding:2px; margin:2px">
+    <div>
+        <h4>Containers</h4>
+        @foreach (var Container in Model)
+        {
+            <div class="form-horizontal" style="border: 2px  solid red; padding:2px; margin:2px">
+                @using (Html.BeginForm(null, "Container", new { containerId = Container.Id }, FormMethod.Post))
+                {
+                    @Html.HiddenFor(modelContainer => Container.Id)
+                    //@Html.EditorFor(modelContainer => Container.Id)
+                    <div class="form-group">
+                        @Html.LabelFor(modelContainer => Container.Description, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(modelContainer => Container.Description)
+                            @Html.ValidationMessageFor(modelContainer => Container.Description)
+                        </div>
+                    </div>
+                    //@Html.EditorFor(modelContainer => Container.SurveyId)
+                    @Html.HiddenFor(modelContainer => Container.SurveyId)
+                    @*Batton*@
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <button type="submit" class="btn btn-primary" formaction="@Url.Action("Delete", "Container")">Delete Container</button>
+                        </div>
+                    </div>
+                }
+                @await Component.InvokeAsync("Questions",new { 
+                         ContainerId =  Container.Id,
+                         Function = "GetAllId"  })
+                @await Component.InvokeAsync("Questions",new { 
+                         ContainerId =  Container.Id,
+                         Function = "Add"  })
+            </div>
+        }
+    </div>
+</div>

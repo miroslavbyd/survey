@@ -1,0 +1,31 @@
+﻿@using ankiety.Models
+
+@model ContainerModel
+<div class="form-horizontal" style="border: 2px  solid red; padding:2px; margin:2px">
+    @{var a = Model.Id;}
+    @using (Html.BeginForm(null, "Container", new { containerId = Model.Id }, FormMethod.Post))
+    {
+        @*@Html.HiddenFor(modelContainer => Model.Id)*@
+        @Html.DisplayFor(modelContainer => Model.Id)
+        @Html.EditorFor(Model => Model.Id)
+        @Html.Editor("Id","a",Model.Id)
+       
+        <div class="form-group">
+            @Html.LabelFor(modelContainer => Model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelContainer => Model.Description)
+                @Html.ValidationMessageFor(modelContainer => Model.Description)
+            </div>
+        </div>
+        @Html.LabelFor(modelContainer => Model.SurveyId, new { @class = "control-label col-md-2" })
+        @Html.EditorFor(modelContainer => Model.SurveyId)
+        @*@Html.HiddenFor(modelContainer => Model.SurveyId)*@
+        @*Batton*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-primary" formaction="@Url.Action("Delete", "Container")">Delete Container</button>
+            </div>
+        </div>
+    }
+</div>

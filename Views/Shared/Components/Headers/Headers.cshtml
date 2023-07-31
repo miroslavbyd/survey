@@ -1,7 +1,4 @@
-﻿brak headers
-@using ankiety.Models
-
-@model IEnumerable<HeaderModel>
+﻿@model IEnumerable<HeaderModel>
 <div  style="border: 5px  solid green; padding:2px; margin:2px">
     <div>
         <h4>Headers</h4>
@@ -11,7 +8,7 @@
                 @using (Html.BeginForm(null, "Header", new { hederId = Header.Id }, FormMethod.Post))
                 {
                     @Html.HiddenFor(modelHeader => Header.Id)
-                    @Html.EditorFor(modelHeader => Header.Id)
+                    //@Html.EditorFor(modelHeader => Header.Id)
                     <div class="form-group">
                         @Html.LabelFor(modelHeader => Header.Description, new { @class = "control-label col-md-2" })
                         <div class="col-md-10">
@@ -26,7 +23,7 @@
                             @Html.ValidationMessageFor(modelHeader => Header.Style)
                         </div>
                     </div>
-                    @Html.EditorFor(modelHeader => Header.SurveyId)
+                    //@Html.EditorFor(modelHeader => Header.SurveyId)
                     @Html.HiddenFor(modelHeader => Header.SurveyId)
                     @*Batton*@
                     <div class="form-group">
@@ -40,4 +37,3 @@
         }
     </div>
 </div>
-

@@ -11,24 +11,40 @@ namespace ankiety.ViewComponents
         {
             _questionService = questionService;
         }
-        public IViewComponentResult Invoke(int ContainerId, string Function)
+        public IViewComponentResult Invoke(int ContainerId, int QuestionId, string Function)
         {
             string MyView = "Default";
 
             if (Function == "GetAllId")
             {
+                MyView = "Questions";
                 var rezult = _questionService.GetAllId(ContainerId);
                 var model = rezult;
-                return View(MyView,model);
+                return View(MyView, model);
             }
             if (Function == "Add")
             {
+                MyView = "AddQuestion";
                 QuestionModel questionModel = new QuestionModel();
                 questionModel.ContainerId = ContainerId;
                 var model = questionModel;
-                return View("AddQuestion", model);
+                return View(MyView, model);
             }
-            return View(null);
+            if (Function == "Edit")
+            {
+                MyView = "EditQuestion";
+                var rezult = _questionService.Edit(QuestionId);
+                var model = rezult;
+                return View(MyView, model);
+            }
+            if (Function == "Presentation")
+            {
+                MyView = "PresentationQuestions";
+                var rezult = _questionService.GetAllId(ContainerId);
+                var model = rezult;
+                return View(MyView, model);
+            }
+            return View(MyView, _questionService.GetAllId(QuestionId));
         }
     }
 }

@@ -19,10 +19,6 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVhZGVyXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Header/_GetAllId.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVhZGVyXF9HZXRBbGxJZC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Header/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSGVhZGVyXF9WaWV3U3RhcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -31,16 +27,48 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQW5zd2Vyc1xBZGRBbnN3ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Answers/Answers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQW5zd2Vyc1xBbnN3ZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Answers/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQW5zd2Vyc1xEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Answers/EditAnswer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQW5zd2Vyc1xFZGl0QW5zd2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Answers/PresentationAnswerType1.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQW5zd2Vyc1xQcmVzZW50YXRpb25BbnN3ZXJUeXBlMS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Answers/PresentationAnswerType2.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQW5zd2Vyc1xQcmVzZW50YXRpb25BbnN3ZXJUeXBlMi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Answers/PresentationAnswerType3.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQW5zd2Vyc1xQcmVzZW50YXRpb25BbnN3ZXJUeXBlMy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Containers/AddContainer.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ29udGFpbmVyc1xBZGRDb250YWluZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Containers/Containers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ29udGFpbmVyc1xDb250YWluZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Containers/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ29udGFpbmVyc1xEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Containers/EditContainer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ29udGFpbmVyc1xFZGl0Q29udGFpbmVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Containers/PresentationContainers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ29udGFpbmVyc1xQcmVzZW50YXRpb25Db250YWluZXJzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Headers/AddHeader.cshtml]
@@ -51,12 +79,36 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyc1xEZWZhdWx0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Headers/EditHeader.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyc1xFZGl0SGVhZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Headers/Headers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyc1xIZWFkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Headers/PresentationHeaders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcSGVhZGVyc1xQcmVzZW50YXRpb25IZWFkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Questions/AddQuestion.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUXVlc3Rpb25zXEFkZFF1ZXN0aW9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Questions/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUXVlc3Rpb25zXERlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Questions/EditQuestion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUXVlc3Rpb25zXEVkaXRRdWVzdGlvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Questions/PresentationQuestions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUXVlc3Rpb25zXFByZXNlbnRhdGlvblF1ZXN0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Components/Questions/Questions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUXVlc3Rpb25zXFF1ZXN0aW9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Shared/Error.cshtml]
@@ -81,6 +133,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Survey/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VydmV5XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Survey/Presentation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VydmV5XFByZXNlbnRhdGlvbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/pepsn/source/repos/ankiety/ankiety/Views/Survey/Privacy.cshtml]

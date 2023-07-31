@@ -29,14 +29,18 @@ namespace ankiety.Controllers
             return View(data);
         }
         [HttpPost]
-        public ActionResult Edit(HeaderModel headerModel)
+        public ActionResult Edit()
         {
             var rezult = new HeaderModel()
             {
-                Id = int.Parse(Request.Form["Header.Id"]),
-                Description = Request.Form["Header.Description"],
-                Style = int.Parse(Request.Form["Header.Style"]),
-                SurveyId = int.Parse(Request.Form["Header.SurveyId"])
+                //Id = Convert.ToInt16(Request.Form["Header.Id"]),
+                //Description = Request.Form["Header.Description"],
+                //Style = Convert.ToInt16(Request.Form["Header.Style"]),
+                //SurveyId = Convert.ToInt16(Request.Form["Header.SurveyId"])
+                Id = Request.Form["Header.Id"] == "" ? 0 : Convert.ToInt16(Request.Form["Header.Id"]),
+                Description = Request.Form["Description"] == "" ? "" : Request.Form["Header.Description"],
+                Style = Request.Form["Header.Style"] == "" ? null : Convert.ToInt16(Request.Form["Header.Style"]),
+                SurveyId = Request.Form["Header.SurveyId"] == "" ? 0 : Convert.ToInt16(Request.Form["Header.SurveyId"]),
             };
             _headerService.Edit(rezult);
             int? Id = _headerService.HeaderIdToSurveyId(rezult.Id);
@@ -57,10 +61,13 @@ namespace ankiety.Controllers
             var rezult = new HeaderModel();
             if (rezult != null)
             {
-                //rezult.Id = int.Parse(Request.Form["Id"]);
-                rezult.Description = Request.Form["Description"];
-                rezult.Style = int.Parse(Request.Form["Style"]);
-                rezult.SurveyId = int.Parse(Request.Form["SurveyId"]);
+                //rezult.Id = Convert.ToInt16(Request.Form["Id"]);
+                //rezult.Description = Request.Form["Description"];
+                //rezult.Style = Convert.ToInt16(Request.Form["Style"]);
+                //rezult.SurveyId = Convert.ToInt16(Request.Form["SurveyId"]);
+                rezult.Description = Request.Form["Description"] == "" ? "" : Request.Form["Description"];
+                rezult.Style = Request.Form["Style"] == "" ? null : Convert.ToInt16(Request.Form["Style"]);
+                rezult.SurveyId = Request.Form["SurveyId"] == "" ? 0 : Convert.ToInt16(Request.Form["SurveyId"]);
             };
             int? Id = rezult.SurveyId;
             _headerService.Add(rezult);
@@ -83,10 +90,15 @@ namespace ankiety.Controllers
             var rezult = new HeaderModel();
             if (rezult != null)
             {
-                rezult.Id = int.Parse(Request.Form["Header.Id"]);
-                rezult.Description = Request.Form["Header.Description"];
-                rezult.Style = int.Parse(Request.Form["Header.Style"]);
-                rezult.SurveyId = int.Parse(Request.Form["Header.SurveyId"]);
+                //rezult.Id = Convert.ToInt16(Request.Form["Header.Id"]);
+                //rezult.Description = Request.Form["Header.Description"];
+                //rezult.Style = Convert.ToInt16(Request.Form["Header.Style"]);
+                //rezult.SurveyId = Convert.ToInt16(Request.Form["Header.SurveyId"]);
+                rezult.Id = Request.Form["Header.Id"] == "" ? 0 : Convert.ToInt16(Request.Form["Header.Id"]);
+                rezult.Description = Request.Form["Header.Description"] == "" ? "" : Request.Form["Header.Description"];
+                rezult.Style = Request.Form["Header.Style"] == "" ? null : Convert.ToInt16(Request.Form["Header.Style"]);
+                rezult.SurveyId = Request.Form["Header.SurveyId"] == "" ? 0 : Convert.ToInt16(Request.Form["Header.SurveyId"]);
+
             };
             int? Id = _headerService.HeaderIdToSurveyId(rezult.Id);
             _headerService.Delete(rezult.Id);

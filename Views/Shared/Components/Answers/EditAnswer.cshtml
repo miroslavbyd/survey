@@ -1,0 +1,59 @@
+﻿@using ankiety.Models
+
+@model AnswerModel
+<div class="form-horizontal" style="border: 2px  solid gray; padding:2px; margin:2px">
+    @{var a = Model.Id;}
+    @using (Html.BeginForm(null, "Answer", new { answerId = Model.Id }, FormMethod.Post))
+    {
+        @*@Html.HiddenFor(modelAnswer => Model.Id)*@
+        @Html.DisplayFor(modelAnswer => Model.Id)
+        @Html.EditorFor(Model => Model.Id)
+        @Html.Editor("Id","a",Model.Id)
+       
+        <div class="form-group">
+            @Html.LabelFor(modelAnswer => Model.Signature, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelAnswer => Model.Signature)
+                @Html.ValidationMessageFor(modelAnswer => Model.Signature)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(modelAnswer => Model.ValueINT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelAnswer => Model.ValueINT)
+                @Html.ValidationMessageFor(modelAnswer => Model.ValueINT)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(modelAnswer => Model.ValueDATETIME, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelAnswer => Model.ValueDATETIME)
+                @Html.ValidationMessageFor(modelAnswer => Model.ValueDATETIME)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(modelAnswer => Model.ValueTEXT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelAnswer => Model.ValueTEXT)
+                @Html.ValidationMessageFor(modelAnswer => Model.ValueTEXT)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(modelAnswer => Model.ValueBIT, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelAnswer => Model.ValueBIT)
+                @Html.ValidationMessageFor(modelAnswer => Model.ValueBIT)
+            </div>
+        </div>
+        @Html.LabelFor(modelContainer => Model.QuestionId, new { @class = "control-label col-md-2" })
+        @Html.EditorFor(modelContainer => Model.QuestionId)
+        @*@Html.HiddenFor(modelContainer => Model.QuestionId)*@
+        @*Batton*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-primary" formaction="@Url.Action("Delete", "Answer")">Delete Answer</button>
+            </div>
+        </div>
+    }
+</div>

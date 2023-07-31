@@ -1,0 +1,38 @@
+﻿@using ankiety.Models
+
+@model QuestionModel
+<div class="form-horizontal" style="border: 2px  solid navy; padding:2px; margin:2px">
+    @{var a = Model.Id;}
+    @using (Html.BeginForm(null, "Question", new { questionId = Model.Id }, FormMethod.Post))
+    {
+        @*@Html.HiddenFor(modelQuestion => Model.Id)*@
+        @Html.DisplayFor(modelQuestion => Model.Id)
+        @Html.EditorFor(Model => Model.Id)
+        @Html.Editor("Id","a",Model.Id)
+       
+        <div class="form-group">
+            @Html.LabelFor(modelQuestion => Model.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelQuestion => Model.Description)
+                @Html.ValidationMessageFor(modelQuestion => Model.Description)
+            </div>
+        </div>
+        @Html.EditorFor(modelHeader => Model.ContainerId)
+        @*@Html.HiddenFor(modelHeader => Model.ContainerId)*@
+        <div class="form-group">
+            @Html.LabelFor(modelQuestion => Model.TypeQuestionId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(modelQuestion => Model.TypeQuestionId)
+                @Html.ValidationMessageFor(modelQuestion => Model.TypeQuestionId)
+            </div>
+        </div>
+        @Html.LabelFor(modelQuestion => Model.ContainerId, new { @class = "control-label col-md-2" })
+        @*Batton*@
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">Edit</button>
+                <button type="submit" class="btn btn-primary" formaction="@Url.Action("Delete", "Question")">Delete Question</button>
+            </div>
+        </div>
+    }
+</div>

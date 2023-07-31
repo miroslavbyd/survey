@@ -2,6 +2,8 @@
 @model QuestionModel
 @using (Html.BeginForm("Add", "Question", FormMethod.Post))
 {   
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken() 
     <div class="form-horizontal" style="border: 2px  solid navy; padding:2px; margin:2px">
         <h4>Add Question</h4>
         @Html.HiddenFor(model => model.Id)

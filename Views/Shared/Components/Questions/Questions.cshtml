@@ -1,0 +1,45 @@
+﻿@model IEnumerable<QuestionModel>
+<div  style="border: 5px  solid navy; padding:2px; margin:2px">
+    <div>
+        <h4>Questions</h4>
+        @foreach (var Question in Model)
+        {
+            <div class="form-horizontal" style="border: 2px  solid navy; padding:2px; margin:2px">
+                @using (Html.BeginForm(null, "Question", new { questionId = Question.Id }, FormMethod.Post))
+                {
+                    @Html.HiddenFor(modelQuestion => Question.Id)
+                    //@Html.EditorFor(modelQuestion => Question.Id)
+                    <div class="form-group">
+                        @Html.LabelFor(modelQuestion => Question.Description, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(modelQuestion => Question.Description)
+                            @Html.ValidationMessageFor(modelQuestion => Question.Description)
+                        </div>
+                    </div>
+                    //@Html.EditorFor(modelQuestion => Question.ContainerId)
+                    @Html.HiddenFor(modelQuestion => Question.ContainerId)
+                    <div class="form-group">
+                        @Html.LabelFor(modelQuestion => Question.TypeQuestionId, new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(modelQuestion => Question.TypeQuestionId)
+                            @Html.ValidationMessageFor(modelHeader => Question.TypeQuestionId)
+                        </div>
+                    </div>
+                    @*Batton*@
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <button type="submit" class="btn btn-primary">Edit</button>
+                            <button type="submit" class="btn btn-primary" formaction="@Url.Action("Delete", "Question")">Delete Question</button>
+                        </div>
+                    </div>
+                }
+                @await Component.InvokeAsync("Answers",new { 
+                    QuestionId =  Question.Id,
+                    Function = "GetAllId"  })
+                @await Component.InvokeAsync("Answers",new { 
+                    QuestionId =  Question.Id,
+                    Function = "Add"  })
+            </div>
+        }
+    </div>
+</div>

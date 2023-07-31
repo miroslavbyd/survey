@@ -33,13 +33,13 @@ namespace ankiety.Controllers
         {
             var rezult = new AnswerModel()
             {
-                Id = int.Parse(Request.Form["Answer.Id"]),
-                Signature = Request.Form["Answer.Signature"],
-                ValueINT = int.Parse(Request.Form["Answer.ValueINT"]),
-                ValueDATETIME = DateTime.Parse(Request.Form["Answer.ValueDATETIME"]),
-                ValueTEXT = Request.Form["Answer.ValueTEXT"],
-                ValueBIT = bool.Parse(Request.Form["Answer.ValueBIT"]),
-                QuestionId = int.Parse(Request.Form["Answer.QuestionId"])
+                Id = Convert.ToInt32(Request.Form["Answer.Id"]),
+                Signature = (Request.Form["Answer.Signature"] != "") ? Request.Form["Answer.Signature"].ToString() : null,
+                ValueINT = (Request.Form["Answer.ValueINT"] != "") ? Convert.ToInt32(Request.Form["Answer.ValueINT"]) : null,
+                ValueDATETIME = (Request.Form["Answer.ValueDATETIME"] !="") ? Convert.ToDateTime(Request.Form["Answer.ValueDATETIME"]) : null,
+                ValueTEXT = (Request.Form["Answer.ValueTEXT"] !="") ? Request.Form["Answer.ValueTEXT"].ToString() : null,
+                ValueBIT = (Request.Form["Answer.ValueBIT"] !="") ? Convert.ToBoolean(Request.Form["Answer.ValueBIT"]) : null,
+                QuestionId = Convert.ToInt32(Request.Form["Answer.QuestionId"])
             };
             _answerService.Edit(rezult);
             int? Id = _answerService.ContainerIdToSurveyId(_answerService.QuestionIdToContainerId(_answerService.AnswerIdToQuestionId(rezult.Id)));
@@ -61,11 +61,11 @@ namespace ankiety.Controllers
             if (rezult != null)
             {
                 //rezult.Id = int.Parse(Request.Form["Id"]);
-                rezult.Signature = Request.Form["Signature"].ToString();
-                rezult.ValueINT = Convert.ToInt32(Request.Form["ValueINT"].ToString());
-                rezult.ValueDATETIME = Convert.ToDateTime(Request.Form["ValueDATETIME"].ToString());
-                rezult.ValueTEXT = Request.Form["ValueTEXT".ToString()];
-                rezult.ValueBIT = Convert.ToBoolean(Request.Form["ValueBIT"].ToString());
+                rezult.Signature = (Request.Form["Signature"] != "") ? Request.Form["Signature"].ToString() : null;
+                rezult.ValueINT = (Request.Form["ValueINT"] != "") ? Convert.ToInt32(Request.Form["ValueINT"]) : null;
+                rezult.ValueDATETIME = (Request.Form["ValueDATETIME"] != "") ? Convert.ToDateTime(Request.Form["ValueDATETIME"]) : null;
+                rezult.ValueTEXT = (Request.Form["ValueTEXT"] != "") ? Request.Form["ValueTEXT"].ToString() : null;
+                rezult.ValueBIT = (Request.Form["ValueBIT"] != "") ? Convert.ToBoolean(Request.Form["ValueBIT"]) : null;
                 rezult.QuestionId = Convert.ToInt16(Request.Form["QuestionId".ToString()]);
             };
             int? Id = _answerService.ContainerIdToSurveyId(_answerService.QuestionIdToContainerId(rezult.QuestionId));
@@ -89,13 +89,13 @@ namespace ankiety.Controllers
             var rezult = new AnswerModel();
             if (rezult != null)
             {
-                rezult.Id = int.Parse(Request.Form["Answer.Id"]);
-                rezult.Signature = Request.Form["Answer.Signature"];
-                rezult.ValueINT = int.Parse(Request.Form["Answer.ValueINT"]);
-                rezult.ValueDATETIME = DateTime.Parse(Request.Form["Answer.ValueDATETIME"]);
-                rezult.ValueTEXT = Request.Form["Answer.ValueTEXT"];
-                rezult.ValueBIT = bool.Parse(Request.Form["Answer.ValueBIT"]);
-                rezult.QuestionId = int.Parse(Request.Form["Answer.QuestionId"]);
+                rezult.Id = Convert.ToInt32(Request.Form["Answer.Id"]);
+                rezult.Signature = (Request.Form["Answer.Signature"] != "") ? Request.Form["Answer.Signature"].ToString() : null;
+                rezult.ValueINT = (Request.Form["Answer.ValueINT"] != "") ? Convert.ToInt32(Request.Form["Answer.ValueINT"]) : null;
+                rezult.ValueDATETIME = (Request.Form["Answer.ValueDATETIME"] != "") ? Convert.ToDateTime(Request.Form["Answer.ValueDATETIME"]) : null;
+                rezult.ValueTEXT = (Request.Form["Answer.ValueTEXT"] != "") ? Request.Form["Answer.ValueTEXT"].ToString() : null;
+                rezult.ValueBIT = (Request.Form["Answer.ValueBIT"] != "") ? Convert.ToBoolean(Request.Form["Answer.ValueBIT"]) : null;
+                rezult.QuestionId = Convert.ToInt16(Request.Form["Answer.QuestionId".ToString()]);
             };
             int? Id = _answerService.ContainerIdToSurveyId(_answerService.QuestionIdToContainerId(_answerService.AnswerIdToQuestionId(rezult.Id)));
             _answerService.Delete(rezult.Id);

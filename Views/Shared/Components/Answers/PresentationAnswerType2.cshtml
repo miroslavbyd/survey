@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AnswerModel>
+<div  style="border: 5px  solid gray; padding:2px; margin:2px">
+    <div>
+        <h4>Answers Type 2</h4>
+        @foreach (var Answer in Model)
+        {
+            <div class="form-horizontal" style="border: 2px  solid gray; padding:2px; margin:2px">
+                @using (Html.BeginForm(null, "Answer", new { answerId = Answer.Id }, FormMethod.Post))
+                {
+                    @Html.HiddenFor(modelAnswer => Answer.Id)
+                    //@Html.EditorFor(modelAnswer => Answer.Id)
+                    @Html.HiddenFor(modelAnswer => Answer.Signature)
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DisplayFor(modelAnswer => Answer.ValueINT)
+                        </div>
+                    </div>
+                    @Html.HiddenFor(modelAnswer => Answer.ValueDATETIME)
+                    @Html.HiddenFor(modelAnswer => Answer.ValueTEXT)
+                    @Html.HiddenFor(modelAnswer => Answer.ValueBIT)
+                    //@Html.EditorFor(modelAnswer => Answer.QuestionId)
+                    @Html.HiddenFor(modelAnswer => Answer.QuestionId)
+                    @*Batton*@
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

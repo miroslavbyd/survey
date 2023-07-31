@@ -1,0 +1,50 @@
+﻿@model IEnumerable<QuestionModel>
+<div  style="border: 5px  solid navy; padding:2px; margin:2px">
+    <div>
+        
+        @foreach (var Question in Model)
+        {
+            <div class="form-horizontal" style="border: 2px  solid navy; padding:2px; margin:2px">
+                @using (Html.BeginForm(null, "Question", new { questionId = Question.Id }, FormMethod.Post))
+                {
+                    @Html.HiddenFor(modelQuestion => Question.Id)
+                    //@Html.EditorFor(modelQuestion => Question.Id)
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.DisplayFor(modelQuestion => Question.Description)
+                        </div>
+                    </div>
+                    @Html.HiddenFor(modelQuestion => Question.ContainerId)
+                    @Html.HiddenFor(modelQuestion => Question.TypeQuestionId)
+                    @*Batton*@
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            
+                        </div>
+                    </div>
+                }
+                @switch(Question.TypeQuestionId)
+                {
+                    case 1:  
+                    @await Component.InvokeAsync("Answers",new { 
+                    QuestionId =  Question.Id,
+                    Function = "PresentationType1"  });
+                    break;
+                    case 2:@await Component.InvokeAsync("Answers",new { 
+                    QuestionId =  Question.Id,
+                    Function = "PresentationType2"  });
+                    break;
+                    case 3:@await Component.InvokeAsync("Answers",new { 
+                    QuestionId =  Question.Id,
+                    Function = "PresentationType3"  });
+                    break;
+                    default:@await Component.InvokeAsync("Answers",new { 
+                    QuestionId =  Question.Id,
+                    Function = "GetAllId"  });
+                    break;
+                }
+                
+            </div>
+        }
+    </div>
+</div>
